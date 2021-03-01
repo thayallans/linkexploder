@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+    <head>
+      <title>Link Exploder</title>
+      <meta name="description" content="1 link which opens multiple tabs.">
+      <meta name="author" content="Thayallan Sri">
+
+      <link rel="stylesheet" href="src/css/base.css">
+
+    </head>
+
+    <body onload="loading_url()">
+        <div style="display: flex;">
+            <img width="100px" height="100px" src="src/assets/explosion.gif" />
+            <h1>linkexploder.com</h1>
+        </div>
+        <p>
+            Add as many links as you want below and hit submit and we'll 
+            generate an exploding link that you can save or send.
+        </p>
+        <textarea id="textarea_links" placeholder="Add a new link on each line." maxlength="1900"></textarea>
+        <button onclick="generate_url()" >Generate Exploding Link</button>
+        <div style="display: flex; width: 100%;">
+            <h1 id="result"></h1>
+        </div>
+
+        <script src="src/js/generate.js"></script>
+        <script src="src/js/load.js"></script>
+    </body>
+</html>
