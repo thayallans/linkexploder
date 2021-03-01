@@ -1,22 +1,29 @@
 const loading_url = () => {
-    const string_urls = window.location.search.substring(1)
+    let string_urls = window.location.search.substring(1);
+    string_urls = invisifyToString(string_urls);
+    if (string_urls[0] == '?') {
+        string_urls = string_urls.substring(1)
+    }
+    string_urls = string_urls.replace('.....', '&&&&&');
     let links = string_urls.split('&&&&&');
     const link_to_load = links[0]
     if (link_to_load) {
         document.getElementById('generate_url').style.display = 'none';
         document.getElementById('loading_url').style.display = 'block';
     }
-    console.log(link_to_load);
     links = remove_empty_links(links);
     links.shift();
-    let users_url = window.location.origin + window.location.pathname;
+    let users_url = window.location.origin + window.location.pathname + '?';
+    let ending = '';
     for (var index = 0; index < links.length; index++) {
         if (index == 0) {
-            users_url = users_url + '?' + links[index];
+            ending = ending + links[index];
         } else {
-            users_url = users_url + '&&&&&' + links[index];
+            ending = ending + '&&&&&' + links[index];
         }
     }
+    ending = stringToInvisify(ending.toLowerCase());
+    users_url = users_url + encodeURIComponent(ending);
     configure_dom_interaction_listeners(link_to_load, links, users_url);
 }
 
@@ -30,6 +37,7 @@ const configure_dom_interaction_listeners = (link_to_load, links, users_url) => 
                 }
             } else {
                 if (link_to_load) {
+                    console.log(link_to_load);
                     window.location = link_to_load;   
                 }
             }

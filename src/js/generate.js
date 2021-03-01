@@ -2,17 +2,20 @@ const generate_url = () => {
     const textarea = document.getElementById('textarea_links')
     let links = textarea.value.replace(/\r\n/g, "\n").split("\n");
     links = remove_empty_links(links);
-    let users_url = window.location.origin + window.location.pathname;
+    let users_url = window.location.origin + window.location.pathname + '?';
+    let ending = '';
     for (var index = 0; index < links.length; index++) {
         if (index == 0) {
-            users_url = users_url + '?' + links[index];
+            ending = ending + '?' + links[index];
         } else {
-            users_url = users_url + '&&&&&' + links[index];
+            ending = ending + '&&&&&' + links[index];
         }
     }
 
+    ending = stringToInvisify(ending);
+
     document.getElementById('result-header').style.display = 'block';
-    document.getElementById('result').innerHTML = users_url;
+    document.getElementById('result').innerHTML = users_url + ending;
 }
 
 const remove_empty_links = (links) => {
