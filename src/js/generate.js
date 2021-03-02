@@ -15,7 +15,7 @@ const generate_url = () => {
     ending = stringToInvisify(ending);
 
     document.getElementById('result-header').style.display = 'block';
-    navigator.clipboard.writeText(users_url + ending);
+    navigator.clipboard.writeText(users_url + ending + '/');
 }
 
 const remove_empty_links = (links) => {
