@@ -1,5 +1,6 @@
 const loading_url = () => {
     let string_urls = window.location.search.substring(6);
+    string_urls = string_urls.slice(0, -1);
     string_urls = invisifyToString(string_urls);
     if (string_urls[0] == '?') {
         string_urls = string_urls.substring(6)
@@ -23,7 +24,7 @@ const loading_url = () => {
         }
     }
     ending = stringToInvisify(ending.toLowerCase());
-    users_url = users_url + encodeURIComponent(ending);
+    users_url = users_url + encodeURIComponent(ending) + '/';
     configure_dom_interaction_listeners(link_to_load, links, users_url);
 }
 
