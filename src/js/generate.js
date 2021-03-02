@@ -2,7 +2,7 @@ const generate_url = () => {
     const textarea = document.getElementById('textarea_links')
     let links = textarea.value.replace(/\r\n/g, "\n").split("\n");
     links = remove_empty_links(links);
-    let users_url = window.location.origin + window.location.pathname + '?';
+    let users_url = window.location.origin + window.location.pathname + '?urls=';
     let ending = '';
     for (var index = 0; index < links.length; index++) {
         if (index == 0) {
@@ -11,7 +11,7 @@ const generate_url = () => {
             ending = ending + '&&&&&' + links[index];
         }
     }
-    
+
     ending = stringToInvisify(ending);
 
     document.getElementById('result-header').style.display = 'block';

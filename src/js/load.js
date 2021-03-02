@@ -1,8 +1,8 @@
 const loading_url = () => {
-    let string_urls = window.location.search.substring(1);
+    let string_urls = window.location.search.substring(6);
     string_urls = invisifyToString(string_urls);
     if (string_urls[0] == '?') {
-        string_urls = string_urls.substring(1)
+        string_urls = string_urls.substring(6)
     }
     string_urls = string_urls.replace('.....', '&&&&&');
     let links = string_urls.split('&&&&&');
@@ -13,7 +13,7 @@ const loading_url = () => {
     }
     links = remove_empty_links(links);
     links.shift();
-    let users_url = window.location.origin + window.location.pathname + '?';
+    let users_url = window.location.origin + window.location.pathname + '?urls=';
     let ending = '';
     for (var index = 0; index < links.length; index++) {
         if (index == 0) {
