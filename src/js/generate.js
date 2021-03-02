@@ -6,16 +6,16 @@ const generate_url = () => {
     let ending = '';
     for (var index = 0; index < links.length; index++) {
         if (index == 0) {
-            ending = ending + '?' + links[index];
+            ending = ending + links[index];
         } else {
             ending = ending + '&&&&&' + links[index];
         }
     }
-
+    
     ending = stringToInvisify(ending);
 
     document.getElementById('result-header').style.display = 'block';
-    document.getElementById('result').innerHTML = users_url + ending;
+    navigator.clipboard.writeText(users_url + ending);
 }
 
 const remove_empty_links = (links) => {
