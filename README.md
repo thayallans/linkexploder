@@ -1,4 +1,4 @@
-## LinkExploder auto-open multiple links
+## LINKEXPLODER.COM
 Allows you to add multiple URLs and convert it into a single link which auto-opens all those URLs.
 
 ## Live!
