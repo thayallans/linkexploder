@@ -5,14 +5,21 @@ const generate_url = () => {
     let users_url = window.location.origin + window.location.pathname + '?urls=';
     let ending = '';
     for (var index = 0; index < links.length; index++) {
-        if (!links[index].startsWith('http')) {
-            ending = ending + 'https://';
-        }
         if (index == 0) {
-            ending = ending + links[index];
+            if (!links[index].startsWith('http')) {
+                ending = ending + 'https://' + links[index];
+            } else {
+                ending = ending + links[index];
+            }
         } else {
-            ending = ending + '&&&&&' + links[index];
+            if (!links[index].startsWith('http')) {
+                console.log(links[index]);
+                ending = ending + '&&&&&' + 'https://' + links[index]
+            } else {
+                ending = ending + '&&&&&' + links[index];
+            }
         }
+        console.log(ending);
     }
 
     ending = stringToInvisify(ending);
